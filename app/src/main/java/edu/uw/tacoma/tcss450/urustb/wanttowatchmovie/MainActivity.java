@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity
     //DataLab
     private SharedPreferences mSharedPreferences;
     private MoviesListFragment mList;
+    private MoviesDetailFragment mDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +128,14 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public void onListFragmentInteraction(Movies item) {
+        mDetail = new MoviesDetailFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(MoviesDetailFragment.MOVIE_ITEM_PARAM, item);
+        mDetail.setArguments(args);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, mDetail)
+                .addToBackStack(null)
+                .commit();
 
     }
 }

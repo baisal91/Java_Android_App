@@ -8,6 +8,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class Movies implements Serializable {
     private  String mTitle;
     private  String mPoster;
@@ -72,4 +75,5 @@ public class Movies implements Serializable {
         }
         return courseList;
     }
+
 }
