@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="get_movies">https://api.themoviedb.org/3/movie/now_playing?api_key=085f80bfe81fcc7222d8458e7802f8b3</string>
+    <string name="login_backend">https://urustb-services-backend.herokuapp.com/login</string>
+    <string name="register_backend">https://urustb-services-backend.herokuapp.com/register</string>
 </resources>
