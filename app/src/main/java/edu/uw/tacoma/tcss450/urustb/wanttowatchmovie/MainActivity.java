@@ -2,6 +2,8 @@ package edu.uw.tacoma.tcss450.urustb.wanttowatchmovie;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.net.nsd.NsdManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,12 +21,14 @@ import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.model.Movies;
 
 public class MainActivity extends AppCompatActivity
         implements SignInDialogFragment.SignInListenerInterface,
-        MoviesListFragment.OnListFragmentInteractionListener {
+        MoviesListFragment.OnListFragmentInteractionListener,
+        RegisterFragment.OnRegisterFragmentInteractionListener {
 
     //DataLab
     private SharedPreferences mSharedPreferences;
     private MoviesListFragment mList;
     private MoviesDetailFragment mDetail;
+    private RegisterFragment mRegisterFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,6 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +58,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        mList = new MoviesListFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, mList)
-                .commit();
     }
 
     @Override
@@ -117,8 +116,13 @@ public class MainActivity extends AppCompatActivity
         } else {
             mSharedPreferences.edit().putBoolean(getString(R.string.LOGGEDIN), true).commit();
             isLoggedIn = true;
-//            fragmentTransaction.add(R.id.fragment_course_container, new CourseListFragment())
-//                    .commit();
+
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new MoviesListFragment())
+                    .addToBackStack(null)
+                    .commit();
+            //fragmentTransaction.add(R.id.fragment_container, new MoviesListFragment());
         }
 
         if(!isLoggedIn) {
@@ -136,6 +140,11 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.fragment_container, mDetail)
                 .addToBackStack(null)
                 .commit();
+
+    }
+
+    @Override
+    public void onRegisterFragmentInteraction(Uri uri) {
 
     }
 }

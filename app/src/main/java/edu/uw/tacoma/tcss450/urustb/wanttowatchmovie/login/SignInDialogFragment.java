@@ -11,13 +11,14 @@ import android.support.v4.app.DialogFragment;
 import android.text.InputType;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.R;
+import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.RegisterFragment;
 
 public class SignInDialogFragment extends DialogFragment {
 
     private SignInListenerInterface mListener;
     public static final  String SIGN_IN_EMAIL = "email";
+    private RegisterFragment mRegisterFragment;
 
     @NonNull
     @Override
@@ -48,10 +49,18 @@ public class SignInDialogFragment extends DialogFragment {
 
                     }
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.register, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        getActivity().finish();
+
+                        mRegisterFragment = new RegisterFragment();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_container, mRegisterFragment)
+                                .addToBackStack(null)
+                                .commit();
+
+
                     }
                 });
         return builder.create();
