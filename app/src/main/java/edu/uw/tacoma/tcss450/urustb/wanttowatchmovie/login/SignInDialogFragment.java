@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.R;
 
-public class SignInDialogFragment extends DialogFragment {
+public class  uruSignInDialogFragment extends DialogFragment {
 
     private SignInListenerInterface mListener;
     public static final  String SIGN_IN_EMAIL = "email";

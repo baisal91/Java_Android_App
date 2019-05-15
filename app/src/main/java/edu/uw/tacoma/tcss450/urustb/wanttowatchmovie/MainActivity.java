@@ -15,11 +15,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.login.SignInDialogFragment;
+import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.model.Movies;
 
-public class MainActivity extends AppCompatActivity  implements SignInDialogFragment.SignInListenerInterface {
+public class MainActivity extends AppCompatActivity
+        implements SignInDialogFragment.SignInListenerInterface,
+        MoviesListFragment.OnListFragmentInteractionListener {
 
     //DataLab
     private SharedPreferences mSharedPreferences;
+    private MoviesListFragment mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,11 @@ public class MainActivity extends AppCompatActivity  implements SignInDialogFrag
                         .setAction("Action", null).show();
             }
         });
+
+        mList = new MoviesListFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, mList)
+                .commit();
     }
 
     @Override
@@ -114,6 +123,10 @@ public class MainActivity extends AppCompatActivity  implements SignInDialogFrag
         if(!isLoggedIn) {
             signInDialogFragment.show(fragmentTransaction, "Sign In");
         }
+
+    }
+    @Override
+    public void onListFragmentInteraction(Movies item) {
 
     }
 }
