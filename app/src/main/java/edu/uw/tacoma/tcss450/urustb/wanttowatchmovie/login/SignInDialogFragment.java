@@ -73,7 +73,9 @@ public class SignInDialogFragment extends DialogFragment {
     }
 
 
-
+    /**
+     * Custom made interface of the class with login method.
+     */
     public interface SignInListenerInterface {
         void login(String email, String pwd);
     }

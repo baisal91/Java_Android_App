@@ -10,7 +10,7 @@ import java.util.List;
 
 
 /**
- * Account class to Register
+ * Account class to Register for Users
  */
 public class Account implements Serializable {
 
@@ -44,7 +44,12 @@ public class Account implements Serializable {
 
     }
 
-
+    /**
+     * parseCourseJson where it parses the object
+     * @param courseJson
+     * @return
+     * @throws JSONException
+     */
     public static List<Account> parseCourseJson(String courseJson) throws JSONException {
         List<Account> accountList = new ArrayList<>();
 

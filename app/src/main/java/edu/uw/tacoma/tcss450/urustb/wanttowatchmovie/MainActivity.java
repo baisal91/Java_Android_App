@@ -151,7 +151,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-   
+    /**
+     * MovieListFragment's interface, where it shows the detail
+     * @param item movie detail
+     */
     @Override
     public void onListFragmentInteraction(Movies item) {
         mDetail = new MoviesDetailFragment();
@@ -192,8 +195,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
-
+    /**
+     * Inner AsyncTask where it helps  to connect with URL
+     */
     private class AddCourseAsyncTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -233,6 +237,11 @@ public class MainActivity extends AppCompatActivity
             return response;
         }
 
+        /**
+         * Method where it generates some Toast messages after registration whether it was
+         * successful or not
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result) {
             try{
