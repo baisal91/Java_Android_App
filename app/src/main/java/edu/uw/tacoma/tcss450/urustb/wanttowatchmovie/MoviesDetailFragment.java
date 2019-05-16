@@ -31,7 +31,14 @@ public class MoviesDetailFragment extends Fragment {
         // Required empty public constructor
     }
 
-@Override
+    /**
+     * the onCreateView can connect each textView with the layout
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+    @Override
 public View onCreateView(LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState) {
     View view =  inflater.inflate(R.layout.fragment_movies_detail, container, false);
@@ -43,6 +50,11 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
     return view;
 }
 
+    /**
+     * to update the information in the text view
+     * After set the text the fragment can be showed correctly
+     * @param movie
+     */
     public void updateView(Movies movie) {
         if (movie != null) {
             mMovieTitle.setText("Title: " + movie.getmTitle());
@@ -56,6 +68,9 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
         }
     }
 
+    /**
+     * Override the on Resume method so that call the updateView
+     */
     @Override
     public void onResume() {
         super.onResume();

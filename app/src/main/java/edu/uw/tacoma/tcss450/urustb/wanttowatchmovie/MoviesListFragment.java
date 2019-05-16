@@ -67,6 +67,13 @@ public class MoviesListFragment extends Fragment {
         }
     }
 
+    /**
+     * crate the onCreatView and call the downloadMoviesTask
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -111,12 +118,24 @@ public class MoviesListFragment extends Fragment {
     }
 
 
+    /**
+     * the listener interface
+     */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Movies item);
     }
 
+    /**
+     * the downloadMoviesTask class
+
+     */
     private class DownloadMoviesTask extends AsyncTask<String, Void, String> {
 
+        /**
+         * override the doInbackground for AsyncTask
+         * @param urls
+         * @return response
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
@@ -142,6 +161,10 @@ public class MoviesListFragment extends Fragment {
             return response;
         }
 
+        /**
+         * override the onPostExecute method in AsyncTask
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result) {
             try{

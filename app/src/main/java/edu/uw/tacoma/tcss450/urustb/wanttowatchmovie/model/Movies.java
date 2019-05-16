@@ -60,6 +60,13 @@ public class Movies implements Serializable {
     public static final String POSTER = "poster_path";
     public static final String OVERVIEW = "overview";
     public static final String RELEASE_DATE = "release_date";
+
+    /**
+     * convert the Json into String
+     * @param courseJSON
+     * @return
+     * @throws JSONException
+     */
     public static List<Movies> parseCourseJSON(String courseJSON) throws JSONException {
         List<Movies> courseList = new ArrayList<Movies>();
         if (courseJSON != null) {
