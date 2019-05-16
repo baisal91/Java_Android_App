@@ -7,6 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.login.Account;
 
 
 /**
@@ -64,11 +69,46 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view   = inflater.inflate(R.layout.fragment_register, container, false);
+        final TextView registerFirstTextView = view.findViewById(R.id.register_first_edit_text);
+        final TextView registerLastTextView = view.findViewById(R.id.register_last_edit_text);
+        final TextView registerUsernameTextView = view.findViewById(R.id.register_username_edit_text);
+        final TextView registerEmailTextView = view.findViewById(R.id.register_email_edit_text);
+        final TextView registerPasswordTextView = view.findViewById(R.id.register_password_edit_text);
+
+
+        Button sendButton = view.findViewById(R.id.register_send_button_edit_text);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String registerFirst = registerFirstTextView.getText().toString();
+                String registerLast = registerLastTextView.getText().toString();
+                String registerUsername = registerUsernameTextView.getText().toString();
+                String registerEmail = registerEmailTextView.getText().toString();
+                String registerPassword = registerPasswordTextView.getText().toString();
+
+
+                if(registerFirst.isEmpty() || registerLast.isEmpty() || registerUsername.isEmpty()
+                     || registerEmail.isEmpty() || registerPassword.isEmpty() ) {
+                    Toast.makeText(v.getContext(), "Please Fill Up all The Fields!"
+                    , Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                Account account = new Account(registerFirst, registerLast, registerUsername, registerEmail,
+                        registerPassword);
+                mListener.onRegisterFragmentInteraction(account);
+
+
+            }
+        });
+
+
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onButtonPressed(Account uri) {
         if (mListener != null) {
             mListener.onRegisterFragmentInteraction(uri);
         }
@@ -103,6 +143,6 @@ public class RegisterFragment extends Fragment {
      */
     public interface OnRegisterFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onRegisterFragmentInteraction(Uri uri);
+        void onRegisterFragmentInteraction(Account account);
     }
 }
