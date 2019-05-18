@@ -24,6 +24,7 @@
     <string name="register_email_name_hint">Enter Email Address</string>
     <string name="register_password_name_hint">Enter Password</string>
     <string name="register_send_button">Register Sent</string>
+    <string name="title_activity_movie">MovieActivity</string>
 
 
 </resources>

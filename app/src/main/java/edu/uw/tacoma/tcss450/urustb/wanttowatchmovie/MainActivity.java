@@ -1,6 +1,7 @@
 package edu.uw.tacoma.tcss450.urustb.wanttowatchmovie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.login.Account;
@@ -43,13 +45,24 @@ public class MainActivity extends AppCompatActivity
     private RegisterFragment mRegisterFragment;
     private JSONObject mArguments;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Button BtPlaying = (Button) findViewById((R.id.button_play));
+        BtPlaying.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, MovieActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button BtSearch;
+        Button BtLocation;
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         mSharedPreferences  = getSharedPreferences(getString(R.string.LOGIN_PREFS),
                 Context.MODE_PRIVATE);
