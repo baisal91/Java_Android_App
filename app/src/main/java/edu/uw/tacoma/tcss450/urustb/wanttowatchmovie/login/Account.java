@@ -8,6 +8,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Account class to Register for Users
+ */
 public class Account implements Serializable {
 
     private String mRegisterFirst;
@@ -22,6 +26,14 @@ public class Account implements Serializable {
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
 
+    /**
+     * The constructor of the class
+     * @param mRegisterFirst first name
+     * @param mRegisterLast last name
+     * @param mRegisterUsername username
+     * @param mRegisterEmail email address
+     * @param mRegisterPassword password
+     */
     public Account(String mRegisterFirst, String mRegisterLast, String mRegisterUsername, String mRegisterEmail, String mRegisterPassword) {
 
         this.mRegisterFirst = mRegisterFirst;
@@ -32,7 +44,12 @@ public class Account implements Serializable {
 
     }
 
-
+    /**
+     * parseCourseJson where it parses the object
+     * @param courseJson
+     * @return
+     * @throws JSONException
+     */
     public static List<Account> parseCourseJson(String courseJson) throws JSONException {
         List<Account> accountList = new ArrayList<>();
 
@@ -52,7 +69,7 @@ public class Account implements Serializable {
 
 
 
-    //getter
+
 
     public String getmRegisterFirst() {
         return mRegisterFirst;
@@ -70,7 +87,7 @@ public class Account implements Serializable {
         return mRegisterPassword;
     }
 
-    ///setter
+
     public void setmRegisterFirst(String mRegisterFirst) {
 
         this.mRegisterFirst = mRegisterFirst;

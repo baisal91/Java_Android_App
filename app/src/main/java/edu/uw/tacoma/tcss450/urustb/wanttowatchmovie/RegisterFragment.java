@@ -1,7 +1,6 @@
 package edu.uw.tacoma.tcss450.urustb.wanttowatchmovie;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,12 +22,10 @@ import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.login.Account;
  * create an instance of this fragment.
  */
 public class RegisterFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -65,6 +62,13 @@ public class RegisterFragment extends Fragment {
         }
     }
 
+    /**
+     * Creates the new blank fragment where app allows user to register with their requirements
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -107,7 +111,7 @@ public class RegisterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Account uri) {
         if (mListener != null) {
             mListener.onRegisterFragmentInteraction(uri);
@@ -142,7 +146,6 @@ public class RegisterFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnRegisterFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onRegisterFragmentInteraction(Account account);
     }
 }

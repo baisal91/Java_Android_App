@@ -3,7 +3,6 @@ package edu.uw.tacoma.tcss450.urustb.wanttowatchmovie;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,7 +21,6 @@ import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.login.Account;
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.login.SignInDialogFragment;
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.model.Movies;
 
-import java.util.List;
 import android.os.AsyncTask;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity
         MoviesListFragment.OnListFragmentInteractionListener,
         RegisterFragment.OnRegisterFragmentInteractionListener {
 
-    //DataLab
     private SharedPreferences mSharedPreferences;
     private MoviesListFragment mList;
     private MoviesDetailFragment mDetail;
@@ -93,6 +90,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * override method where  it has an option to logout of app.
+     * @param item logout
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -118,6 +120,11 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * login method where it checks the user whether it has provided with right email address and password
+     * @param email user email
+     * @param pwd user password
+     */
     @Override
     public void login(String email, String pwd) {
 
@@ -156,6 +163,11 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
+
+    /**
+     * MovieListFragment's interface, where it shows the detail
+     * @param item movie detail
+     */
     @Override
     public void onListFragmentInteraction(Movies item) {
         mDetail = new MoviesDetailFragment();
@@ -169,6 +181,11 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+    /**
+     * method where it sends the object into webservice
+     * @param account
+     */
     @Override
     public void onRegisterFragmentInteraction(Account account) {
 
@@ -191,8 +208,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
-    //Inner class
+    /**
+     * Inner AsyncTask where it helps  to connect with URL
+     */
     private class AddCourseAsyncTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -232,6 +250,11 @@ public class MainActivity extends AppCompatActivity
             return response;
         }
 
+        /**
+         * Method where it generates some Toast messages after registration whether it was
+         * successful or not
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result) {
             try{

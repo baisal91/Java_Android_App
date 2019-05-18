@@ -20,6 +20,12 @@ public class SignInDialogFragment extends DialogFragment {
     public static final  String SIGN_IN_EMAIL = "email";
     private RegisterFragment mRegisterFragment;
 
+
+    /**
+     * the overriden method, where it has alert which shows the "Sign in" and "Register" buttons.
+     * @param savedInstanceState
+     * @return Dialog
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -67,6 +73,9 @@ public class SignInDialogFragment extends DialogFragment {
     }
 
 
+    /**
+     * Custom made interface of the class with login method.
+     */
     public interface SignInListenerInterface {
         void login(String email, String pwd);
     }
