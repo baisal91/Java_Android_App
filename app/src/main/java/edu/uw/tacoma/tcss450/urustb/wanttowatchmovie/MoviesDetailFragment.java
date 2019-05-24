@@ -60,10 +60,10 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
             mMovieTitle.setText("Title: " + movie.getmTitle());
 //            mMovieTitle.setPadding(0,0,0,0);
             mMovieOverview.setText("Over View: "+movie.getmOverView());
-            mMovieOverview.setPadding(0,200,0,0);
+            mMovieOverview.setPadding(0,50,0,0);
             mMovieReleaseDate.setText("Release Date: " + movie.getmReleaseDate());
 //            mMovieReleaseDate.setPadding(0,200,0,0);
-//            mMoviePoster.setText(movie.getmPoster());
+            mMoviePoster.setText(movie.getmPoster());
 //            mMoviePoster.setPadding(0,300,0,0);
         }
     }
