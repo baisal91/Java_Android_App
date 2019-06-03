@@ -9,7 +9,7 @@ import android.widget.Button;
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.login.Account;
 
 public class LoginActivity extends AppCompatActivity implements
-        RegisterFragment.OnRegisterFragmentInteractionListener {
+        RegisterFragment.OnRegisterFragmentInteractionListener, SignInFragment.OnSignInFragmentInteractionListener {
 
 
 
@@ -35,7 +35,9 @@ public class LoginActivity extends AppCompatActivity implements
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +50,8 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
 
+    @Override
+    public void onSignInFragmentInteraction(Account account) {
 
-
-
+    }
 }
