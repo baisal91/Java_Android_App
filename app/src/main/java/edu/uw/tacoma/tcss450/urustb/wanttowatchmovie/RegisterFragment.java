@@ -108,7 +108,7 @@ public class RegisterFragment extends Fragment {
         });
 
 
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        return view;
     }
 
 

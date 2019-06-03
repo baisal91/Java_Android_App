@@ -27,6 +27,7 @@
     <string name="title_activity_movie">MovieActivity</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_registerrr">RegisterrrActivity</string>
 
 
 </resources>
