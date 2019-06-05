@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity
             sharedPreferences.edit().putBoolean(getString(R.string.LOGGEDIN), false)
                     .commit();
 
+
         }
 
         return super.onOptionsItemSelected(item);
