@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   
+     <string name="CREATE_COURSE_SQL">
+        CREATE TABLE IF NOT EXISTS Course
+        (title TEXT PRIMARY KEY, poster_path TEXT,
+        overview TEXT, release_date TEXT)
+    </string>
+
+        <string name="DROP_COURSE_SQL">
+        DROP TABLE IF EXISTS Course
+    </string>
+
+</resources>

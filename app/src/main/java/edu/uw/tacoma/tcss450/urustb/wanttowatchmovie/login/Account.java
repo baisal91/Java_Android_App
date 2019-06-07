@@ -44,6 +44,13 @@ public class Account implements Serializable {
 
     }
 
+    public Account(String mRegisterEmail, String mRegisterPassword) {
+
+        this.mRegisterEmail = mRegisterEmail;
+        this.mRegisterPassword = mRegisterPassword;
+
+    }
+
     /**
      * parseCourseJson where it parses the object
      * @param courseJson

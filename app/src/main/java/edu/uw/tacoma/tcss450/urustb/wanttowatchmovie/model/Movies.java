@@ -1,5 +1,7 @@
 package edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.model;
 
+import android.media.Image;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,19 +13,26 @@ import java.util.List;
 
 
 
+
+
 public class Movies implements Serializable {
     private  String mTitle;
     private  String mPoster;
     private  String mOverView;
     private  String mReleaseDate;
 
+
+
     public void setmTitle(String mTitle) {
         this.mTitle = mTitle;
     }
 
+
+
     public void setmPoster(String mPoster) {
         this.mPoster = mPoster;
     }
+
 
     public void setmOverView(String mOverView) {
         this.mOverView = mOverView;

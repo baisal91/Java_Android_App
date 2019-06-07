@@ -21,11 +21,19 @@
         android:id="@+id/movie_item_releaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right"/>
+        android:layout_gravity="top|left"/>
+
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:id="@+id/movie_item_poster"-->
+        <!--android:layout_gravity="bottom"/>-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movie_item_poster"
+        android:layout_gravity="bottom"/>
 
         <!--android:text="@string/hello_blank_fragment"/>-->
 

@@ -1,6 +1,9 @@
 package edu.uw.tacoma.tcss450.urustb.wanttowatchmovie;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.data.MovieDB;
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.model.Movies;
 
 /**
@@ -39,6 +43,7 @@ public class MoviesListFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
     private List<Movies> mCourseList;
     private RecyclerView mRecyclerView;
+    private MovieDB movieDB;
 
 
     /**
@@ -90,11 +95,33 @@ public class MoviesListFragment extends Fragment {
             } else {
                 mRecyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            DownloadMoviesTask downloadMoviesTask = new DownloadMoviesTask();
-            downloadMoviesTask.execute(getString(R.string.get_movies));
+            ConnectivityManager connMgr = (ConnectivityManager)
+                    getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+            if(networkInfo != null && networkInfo.isConnected()) {
+                new DownloadMoviesTask().execute(getString(R.string.get_movies));
+            }
+            else {
+                Toast.makeText(view.getContext(),
+                        "No network connection available. Display locally stored data",
+                        Toast.LENGTH_SHORT).show();
+
+                if(movieDB == null) {
+                    movieDB = new MovieDB(getActivity());
+                }
+                if(mCourseList == null) {
+                    mCourseList = movieDB.getCourses();
+                }
+                mRecyclerView.setAdapter(new MyMoviesRecyclerViewAdapter(mCourseList, mListener));
+            }
+            //mRecyclerView.setAdapter(new MyItemRecyclerViewAdapter(mCourseList, mListener));
+            //  new DownloadCoursesTask().execute(getString(R.string.get_courses));
 
         }
 
+        //new DownloadCoursesTask().execute(getString(R.string.get_courses));
 
         return view;
     }
@@ -127,7 +154,6 @@ public class MoviesListFragment extends Fragment {
 
     /**
      * the downloadMoviesTask class
-
      */
     private class DownloadMoviesTask extends AsyncTask<String, Void, String> {
 
@@ -168,17 +194,33 @@ public class MoviesListFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             try{
-                JSONObject resultObject = new JSONObject(result);
+                JSONObject  resultObject = new JSONObject(result);
                 mCourseList = Movies.parseCourseJSON(resultObject.getString("results"));
-                if(!mCourseList.isEmpty()) {
-                    mRecyclerView.setAdapter(new MyMoviesRecyclerViewAdapter(mCourseList,mListener));
-                }
-            }catch (JSONException e){
-                Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_LONG).show();
 
+                if(!mCourseList.isEmpty()) {
+
+                    if(movieDB == null){
+                        movieDB = new MovieDB(getActivity());
+                    }
+
+                    movieDB.deleteCourses();
+
+                    for(int i=0; i<mCourseList.size(); i++) {
+                        Movies course = mCourseList.get(i);
+                        movieDB.insertCourse(course.getmTitle(),
+                                course.getmPoster(),
+                                course.getmOverView(),
+                                course.getmReleaseDate());
+                    }
+
+                    mRecyclerView.setAdapter(new MyMoviesRecyclerViewAdapter(mCourseList, mListener));
+                }
+
+            } catch (JSONException e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT)
+                        .show();
             }
         }
 
     }
 }
-
