@@ -7,7 +7,11 @@
         <item name="colorPrimaryDark">@color/uwGold</item>
         <item name="colorAccent">@color/uwMetalicGold</item>
         <item name="android:textColor">@color/uwPurple</item>
+<<<<<<< HEAD
         <item name="android:textSize">24dp</item>
+=======
+        <item name="android:textSize">18dp</item>
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
 
         <item name="android:editTextColor">@color/Red</item>
         <item name="android:textColorHint">@color/uwGray</item>
@@ -38,4 +42,8 @@
     </style>
 
 
+<<<<<<< HEAD
 </resources>
+=======
+</resources>
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de

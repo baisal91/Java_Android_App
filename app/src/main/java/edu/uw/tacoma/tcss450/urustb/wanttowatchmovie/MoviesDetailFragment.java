@@ -64,6 +64,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
         if (movie != null) {
             mMovieTitle.setText("Title:   " + movie.getmTitle());
 //            mMovieTitle.setPadding(0,0,0,0);
+<<<<<<< HEAD
             mMovieOverview.setText("Over View:"+movie.getmOverView());
             mMovieOverview.setPadding(0,500,0,0);
             mMovieReleaseDate.setText("Release Date:  " + movie.getmReleaseDate());
@@ -71,6 +72,14 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
  //           mMoviePoster.setText(movie.getmPoster());
      //       mMoviePoster.setImageResource(movie.getmPoster());
       //      mMoviePoster.setPadding(0,1200,0,0);
+=======
+            mMovieOverview.setText("Over View: "+movie.getmOverView());
+            mMovieOverview.setPadding(0,50,0,0);
+            mMovieReleaseDate.setText("Release Date: " + movie.getmReleaseDate());
+//            mMovieReleaseDate.setPadding(0,200,0,0);
+            mMoviePoster.setText(movie.getmPoster());
+//            mMoviePoster.setPadding(0,300,0,0);
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
         }
     }
 

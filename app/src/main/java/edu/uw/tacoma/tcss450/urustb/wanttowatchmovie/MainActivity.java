@@ -1,13 +1,23 @@
 package edu.uw.tacoma.tcss450.urustb.wanttowatchmovie;
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
+=======
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+<<<<<<< HEAD
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
@@ -15,11 +25,22 @@ import android.view.MenuItem;
 
 import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.model.Movies;
 
+=======
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+import edu.uw.tacoma.tcss450.urustb.wanttowatchmovie.model.Movies;
+
+import org.json.JSONObject;
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
 public class MainActivity extends AppCompatActivity
         implements
         MoviesListFragment.OnListFragmentInteractionListener {
 
     private MoviesDetailFragment mDetail;
+
+
 
 
     @Override
@@ -28,13 +49,26 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Button BtPlaying = (Button) findViewById((R.id.button_play));
+        BtPlaying.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, MovieActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button BtSearch;
+        Button BtLocation;
 
+<<<<<<< HEAD
 
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new MoviesListFragment())
                 .addToBackStack(null)
                 .commit();
+=======
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -85,16 +119,30 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_logout) {
+<<<<<<< HEAD
 
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
 
         } else if(id == R.id.action_share) {
+=======
+            SharedPreferences sharedPreferences =
+                    getSharedPreferences(getString(R.string.LOGIN_PREFS), Context.MODE_PRIVATE);
+            sharedPreferences.edit().putBoolean(getString(R.string.LOGGEDIN), false)
+                    .commit();
+
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
 
         }
 
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
 
 
     /**
@@ -115,5 +163,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
 }
 

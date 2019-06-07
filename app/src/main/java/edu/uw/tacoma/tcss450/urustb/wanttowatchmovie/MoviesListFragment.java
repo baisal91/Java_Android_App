@@ -198,6 +198,7 @@ public class MoviesListFragment extends Fragment {
                 mCourseList = Movies.parseCourseJSON(resultObject.getString("results"));
 
                 if(!mCourseList.isEmpty()) {
+<<<<<<< HEAD
 
                     if(movieDB == null){
                         movieDB = new MovieDB(getActivity());
@@ -216,6 +217,26 @@ public class MoviesListFragment extends Fragment {
                     mRecyclerView.setAdapter(new MyMoviesRecyclerViewAdapter(mCourseList, mListener));
                 }
 
+=======
+
+                        if(movieDB == null){
+                            movieDB = new MovieDB(getActivity());
+                        }
+
+                        movieDB.deleteCourses();
+
+                        for(int i=0; i<mCourseList.size(); i++) {
+                            Movies course = mCourseList.get(i);
+                            movieDB.insertCourse(course.getmTitle(),
+                                    course.getmPoster(),
+                                    course.getmOverView(),
+                                    course.getmReleaseDate());
+                        }
+
+                        mRecyclerView.setAdapter(new MyMoviesRecyclerViewAdapter(mCourseList, mListener));
+                    }
+
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
             } catch (JSONException e) {
                 Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT)
                         .show();

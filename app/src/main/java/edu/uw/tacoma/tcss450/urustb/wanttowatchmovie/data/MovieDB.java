@@ -106,4 +106,8 @@ public class MovieDB {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de

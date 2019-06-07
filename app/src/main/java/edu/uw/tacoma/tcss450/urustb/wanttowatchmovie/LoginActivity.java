@@ -54,4 +54,8 @@ public class LoginActivity extends AppCompatActivity implements
     public void onSignInFragmentInteraction(Account account) {
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8eeda8bc17d25f9cb5d25ea3b3407508d89970de
